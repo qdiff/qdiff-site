@@ -100,7 +100,6 @@ const external = computed(() => Boolean(APP_STORE_URL))
   display: block;
   height: 50px;
   width: auto;
-  border-radius: 8px;
 }
 
 .action-primary {
