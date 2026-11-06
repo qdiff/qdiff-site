@@ -47,7 +47,7 @@ const footer = computed<FooterConfig | undefined>(
 
 <style scoped>
 .footer {
-  background: #142033;
+  background: #1a1a1a;
   color: #ffffff;
   padding: 80px 0 40px;
 }

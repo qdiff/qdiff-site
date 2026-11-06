@@ -71,7 +71,6 @@ function tc(S: typeof STR.en, lang: string) {
       { text: S.guide, link: L('/guide/introduction') },
       { text: S.download, link: L('/guide/download') },
       { text: S.faq, link: L('/guide/faq') },
-      { text: 'GitHub', link: 'https://github.com/qdiff' },
     ],
     sidebar: [
       {
