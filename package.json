@@ -1,0 +1,22 @@
+{
+  "name": "qdiff-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Official website for qDiff — see exactly what changed between files, folders and projects on your Mac",
+  "packageManager": "pnpm@10.26.0",
+  "homepage": "https://qdiff.w3cub.com",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "docs:deploy": "./deploy.sh",
+    "assets": "python3 scripts/build-assets.py"
+  },
+  "keywords": ["qdiff", "diff", "compare", "files", "folders", "macos", "visual-diff"],
+  "author": "w3cub.com",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}

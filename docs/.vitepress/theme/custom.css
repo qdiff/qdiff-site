@@ -1,0 +1,516 @@
+/* =============================================================
+  qDiff — Home Page Styles
+  Compatible with VitePress default theme (light + dark)
+  ============================================================= */
+
+/* ─── Hero background glow ──────────────────────────────────── */
+
+.VPHero {
+  position: relative;
+  overflow: hidden;
+}
+
+.VPHero::before {
+  content: '';
+  position: absolute;
+  top: -160px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 700px;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--vp-c-brand-1) 14%, transparent) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.VPHero .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Hero image — drop shadow + rounded ───────────────────── */
+
+.VPHero .image-container img {
+  border-radius: 14px;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.dark .VPHero .image-container img {
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 16px 48px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Hero name gradient ────────────────────────────────────── */
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-nav-logo-height: 26px;
+  --vp-home-hero-name-background: linear-gradient(135deg, #4b8dff 0%, #2f6fe4 60%, #20a877 100%);
+  --vp-c-brand-1: #2f6fe4;
+  --vp-c-brand-2: #2560c9;
+  --vp-c-brand-3: #1e4fa8;
+  --vp-c-brand-soft: rgba(47, 111, 228, 0.16);
+  --vp-sidebar-bg-color: #ffffff;
+
+  /* AdvancedHome layout tokens — light */
+  --ah-navbar-bg: rgba(255, 255, 255, 0.8);
+  --ah-navbar-border: rgba(0, 0, 0, 0.08);
+  --ah-card-bg: #ffffff;
+  --ah-card-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+  --ah-card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+  --ah-hero-bg: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  --ah-hero-title-from: #1c3f7c;
+  --ah-hero-title-to: #20a877;
+  --ah-faq-hover-bg: #e9ecef;
+
+  /* Skeleton screen tokens — light */
+  --ah-skeleton-base: #eef0f2;
+  --ah-skeleton-hi: #f8f9fb;
+
+  --vp-sidebar-bg-image:
+    radial-gradient(circle at 20% 80%, rgba(47, 111, 228, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(32, 168, 119, 0.08) 0%, transparent 50%);
+}
+
+.dark {
+  --vp-sidebar-bg-color: #1b1b1f;
+
+  /* AdvancedHome layout tokens — dark */
+  --ah-navbar-bg: rgba(27, 27, 31, 0.8);
+  --ah-navbar-border: rgba(255, 255, 255, 0.08);
+  --ah-card-bg: #232328;
+  --ah-card-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  --ah-card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.5);
+  --ah-hero-bg: linear-gradient(135deg, #1b1b1f 0%, #161618 100%);
+  --ah-hero-title-from: #ffffff;
+  --ah-hero-title-to: #cccccc;
+  --ah-faq-hover-bg: #2a2a2e;
+
+  /* Skeleton screen tokens — dark */
+  --ah-skeleton-base: #2a2a30;
+  --ah-skeleton-hi: #34343c;
+}
+
+/* ─── Hide default action buttons — store badges replace them ─ */
+
+.VPHero .actions {
+  display: none;
+}
+
+/* ─── Hero text ─────────────────────────────────────────────── */
+
+.VPHero .tagline {
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─── Store badges ───────────────────────────────────────────── */
+
+.home-badge-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+  justify-content: center;
+}
+
+.VPHero.has-image .home-badge-row {
+  justify-content: flex-start;
+}
+
+.store-badge-link {
+  display: inline-flex;
+  border-radius: 10px;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  outline-offset: 3px;
+}
+
+.store-badge-link:hover {
+  opacity: 0.82;
+  transform: translateY(-1px);
+}
+
+/* ─── Sidebar with hero background pattern ─────────────────── */
+
+.VPSidebar {
+  background: var(--vp-sidebar-bg-color);
+  background-image: var(--vp-sidebar-bg-image);
+  position: relative;
+}
+
+/* Isolate the curtain from --vp-sidebar-bg-color so the sidebar's
+   decorative radial gradients show through uniformly at the top.
+   The .VPSidebar solid background-color still provides the opaque
+   base that keeps the mobile overlay visible. */
+.VPSidebar .curtain {
+  background-color: transparent;
+}
+
+.store-badge-link:active {
+  opacity: 0.65;
+  transform: translateY(0);
+}
+
+.store-badge {
+  display: block;
+  height: 46px;
+  width: auto;
+}
+
+.dark .store-badge {
+  filter: invert(1) brightness(0.92);
+}
+
+/* ─── Features section ──────────────────────────────────────── */
+
+.VPFeatures .VPFeature {
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 28px 24px;
+  transition: border-color 0.2s ease;
+}
+
+.VPFeatures .VPFeature:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.VPFeatures .VPFeature h2 {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.VPFeatures .VPFeature p {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--vp-c-text-2);
+  margin-top: 8px;
+}
+
+/* ─── Feature icons ─────────────────────────────────────────── */
+
+.VPFeature .icon {
+  background-color: var(--vp-c-brand-soft);
+  border-radius: 10px;
+  transition: background-color 0.25s;
+}
+
+.VPFeature .icon img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* ─── Home content (below features) ────────────────────────── */
+
+.VPHomeContent {
+  padding: 80px 0 120px;
+}
+
+.VPHomeContent .container {
+  max-width: 900px;
+}
+
+/* ─── Section titles ────────────────────────────────────────── */
+
+.home-section-title {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--vp-c-text-1);
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+.home-section-subtitle {
+  font-size: 15px;
+  color: var(--vp-c-text-2);
+  text-align: center;
+  margin: 0 0 56px;
+  line-height: 1.6;
+}
+
+/* ─── How It Works ──────────────────────────────────────────── */
+
+.home-how-section {
+  margin-bottom: 96px;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 0;
+}
+
+.step {
+  padding: 28px 24px;
+  background: var(--vp-c-bg-soft);
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-divider);
+}
+
+.step-number {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vp-c-brand-1);
+  margin-bottom: 16px;
+}
+
+.step h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  margin: 0 0 10px;
+  border: none !important;
+  padding: 0 !important;
+  letter-spacing: -0.01em;
+}
+
+.step p {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--vp-c-text-2);
+  margin: 0;
+}
+
+/* ─── FAQ ───────────────────────────────────────────────────── */
+
+.home-faq-section {
+  margin-bottom: 80px;
+}
+
+.faq-list {
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+details.faq-item {
+  border-bottom: 1px solid var(--vp-c-divider);
+  padding: 0;
+  margin: 0;
+}
+
+details.faq-item summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 4px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--vp-c-text-1);
+  cursor: pointer;
+  user-select: none;
+  gap: 16px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+details.faq-item summary::after {
+  content: '+';
+  flex-shrink: 0;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--vp-c-text-3);
+  transition: color 0.2s ease;
+}
+
+details.faq-item[open] summary::after {
+  content: '\2212';
+  color: var(--vp-c-brand-1);
+}
+
+details.faq-item .faq-answer {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--vp-c-text-2);
+  padding: 4px 4px 24px;
+  max-width: 680px;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .home-section-title {
+    font-size: 22px;
+  }
+
+  .VPHomeContent {
+    padding: 60px 0 80px;
+  }
+
+  .home-badge-row {
+    gap: 10px;
+  }
+
+  .store-badge {
+    height: 40px;
+  }
+}
+
+/* ─── Testimonials Section ──────────────────────────────────── */
+
+.home-testimonials-section {
+  margin-bottom: 96px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-top: 0;
+}
+
+.testimonial {
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 28px 24px;
+  text-align: center;
+  transition: border-color 0.2s ease;
+}
+
+.testimonial:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.testimonial blockquote {
+  margin: 0;
+}
+
+.testimonial p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+  margin-bottom: 16px;
+}
+
+.testimonial cite {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--vp-c-text-3);
+  font-style: normal;
+}
+
+/* ─── Call to Action Section ────────────────────────────────── */
+
+.home-cta-section {
+  background: linear-gradient(135deg, var(--vp-c-brand-1) 0%, var(--vp-c-brand-2) 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  border-radius: 16px;
+  margin: 0 24px;
+}
+
+.cta-content h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 16px;
+  letter-spacing: -0.025em;
+}
+
+.cta-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 32px;
+  opacity: 0.9;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.cta-button.primary {
+  background: white;
+  color: var(--vp-c-brand-1);
+}
+
+.cta-button.primary:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .home-cta-section {
+    margin: 0 16px;
+    padding: 60px 20px;
+  }
+
+  .cta-content h2 {
+    font-size: 24px;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-button {
+    width: 200px;
+  }
+}
+
+/* ─── Guide illustrations ─────────────────────────────────────── */
+
+.guide-shot {
+  display: block;
+  width: 100%;
+  margin: 26px 0 30px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(30, 58, 95, 0.07);
+}
+
+.dark .guide-shot {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
