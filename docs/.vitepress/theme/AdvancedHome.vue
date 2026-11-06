@@ -652,7 +652,7 @@ const categories = computed(() =>
 /* CTA Section */
 .cta-section {
   padding: 120px 0;
-  background: linear-gradient(135deg, #1b3a7a 0%, #14264d 55%, #123d45 100%);
+  background: linear-gradient(135deg, rgb(0, 0, 0), rgb(26, 26, 26));
   color: #ffffff;
 }
 
