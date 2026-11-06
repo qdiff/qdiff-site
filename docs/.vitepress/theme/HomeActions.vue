@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useData } from 'vitepress'
+import { useData, withBase } from 'vitepress'
 import { APP_STORE_URL, DOWNLOAD_PATH, INTRO_PATH } from './site'
 import { localeLink, resolveLang } from './locale'
 
@@ -38,11 +38,21 @@ const external = computed(() => Boolean(APP_STORE_URL))
   <div class="home-actions">
     <div class="home-action-row">
       <a
+        v-if="external"
         :href="primaryHref"
-        class="action-primary"
-        :target="external ? '_blank' : undefined"
-        :rel="external ? 'noopener noreferrer' : undefined"
-      >{{ external ? copy.primaryStore : copy.primary }}</a>
+        class="action-store"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          :src="withBase('/badges/Mac-App-Store.png')"
+          :alt="copy.primaryStore"
+          class="store-badge"
+          width="195"
+          height="46"
+        />
+      </a>
+      <a v-else :href="primaryHref" class="action-primary">{{ copy.primary }}</a>
       <a :href="secondaryHref" class="action-secondary">{{ copy.secondary }}</a>
     </div>
     <p class="action-note">{{ copy.note }}</p>
@@ -73,6 +83,24 @@ const external = computed(() => Boolean(APP_STORE_URL))
   font-weight: 650;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.action-store {
+  display: inline-flex;
+  border-radius: 10px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.action-store:hover {
+  opacity: 0.82;
+  transform: translateY(-2px);
+}
+
+.action-store img {
+  display: block;
+  height: 50px;
+  width: auto;
+  border-radius: 8px;
 }
 
 .action-primary {

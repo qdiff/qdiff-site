@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useData } from 'vitepress'
+import { useData, withBase } from 'vitepress'
 import { APP_STORE_URL, DMG_URL, mailto } from './site'
 import { resolveLang } from './locale'
 
@@ -44,7 +44,9 @@ const ready = computed(() => Boolean(APP_STORE_URL || DMG_URL))
 <template>
   <div class="download-box">
     <div v-if="ready" class="download-ready">
-      <a v-if="APP_STORE_URL" :href="APP_STORE_URL" target="_blank" rel="noopener noreferrer" class="dl-btn dl-primary">{{ copy.store }}</a>
+      <a v-if="APP_STORE_URL" :href="APP_STORE_URL" target="_blank" rel="noopener noreferrer" class="dl-store">
+        <img :src="withBase('/badges/Mac-App-Store.png')" :alt="copy.store" class="store-badge" width="195" height="46" />
+      </a>
       <a v-if="DMG_URL" :href="DMG_URL" class="dl-btn" :class="{ 'dl-primary': !APP_STORE_URL, 'dl-secondary': APP_STORE_URL }">{{ copy.dmg }}</a>
     </div>
     <div v-else class="download-pending">
@@ -97,6 +99,24 @@ const ready = computed(() => Boolean(APP_STORE_URL || DMG_URL))
 .pending-copy { flex: 1; min-width: 220px; }
 .pending-copy strong { font-size: 1.05rem; color: var(--vp-c-text-1); }
 .pending-copy p { margin: 6px 0 0; font-size: 0.93rem; color: var(--vp-c-text-2); line-height: 1.6; }
+
+.dl-store {
+  display: inline-flex;
+  border-radius: 10px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dl-store:hover {
+  opacity: 0.82;
+  transform: translateY(-2px);
+}
+
+.dl-store img {
+  display: block;
+  height: 50px;
+  width: auto;
+  border-radius: 8px;
+}
 
 .dl-btn {
   display: inline-flex;

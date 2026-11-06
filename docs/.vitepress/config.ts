@@ -71,6 +71,7 @@ function tc(S: typeof STR.en, lang: string) {
       { text: S.guide, link: L('/guide/introduction') },
       { text: S.download, link: L('/guide/download') },
       { text: S.faq, link: L('/guide/faq') },
+      { text: 'GitHub', link: 'https://github.com/qdiff' },
     ],
     sidebar: [
       {
@@ -188,13 +189,7 @@ export default defineConfig({
     logo: '/logo.png',
     search: { provider: 'local' },
     socialLinks: [
-      {
-        icon: {
-          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
-        },
-        link: 'mailto:qdiff@w3cub.com',
-        ariaLabel: 'Email support',
-      },
+      { icon: 'github', link: 'https://github.com/qdiff' },
     ],
   },
   locales: {
