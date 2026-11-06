@@ -9,10 +9,16 @@
       </div>
 
       <div class="nav-right">
-        <!-- Desktop: inline nav menu + language switcher -->
+        <!-- Desktop: same order, groups and dividers as VitePress' inner-page
+             navbar (menu | translations | appearance | social links). -->
         <div class="nav-inline">
-          <VPNavBarMenu />
+          <VPNavBarMenu class="nav-menu" />
+          <span class="nav-divider" aria-hidden="true" />
           <VPNavBarTranslations class="nav-lang" />
+          <span class="nav-divider nav-divider-appearance" aria-hidden="true" />
+          <VPSwitchAppearance class="nav-appearance" />
+          <span class="nav-divider nav-divider-social" aria-hidden="true" />
+          <VPNavBarSocialLinks class="nav-social" />
         </div>
 
         <!-- Mobile: a "more" button that opens the menu panel -->
@@ -30,8 +36,7 @@
           </svg>
         </button>
 
-        <!-- Theme toggle is always visible -->
-        <VPSwitchAppearance class="nav-appearance" />
+        <!-- Theme toggle stays visible on every breakpoint -->
       </div>
     </div>
 
@@ -64,6 +69,20 @@
               @click="close"
             >{{ l.text }}</a>
           </div>
+
+          <!-- Mirrors the social link inside VitePress' mobile screen menu -->
+          <a
+            href="https://github.com/qdiff"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="panel-social-link"
+            @click="close"
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
+            </svg>
+            <span>GitHub</span>
+          </a>
         </div>
       </div>
     </transition>
@@ -76,6 +95,7 @@ import { useData, useRoute } from 'vitepress'
 import { VPLink } from 'vitepress/theme'
 import VPNavBarMenu from 'vitepress/dist/client/theme-default/components/VPNavBarMenu.vue'
 import VPNavBarTranslations from 'vitepress/dist/client/theme-default/components/VPNavBarTranslations.vue'
+import VPNavBarSocialLinks from 'vitepress/dist/client/theme-default/components/VPNavBarSocialLinks.vue'
 import VPSwitchAppearance from 'vitepress/dist/client/theme-default/components/VPSwitchAppearance.vue'
 // localeLink no longer needed — nav links are already prefixed in config.ts
 
@@ -183,8 +203,27 @@ onUnmounted(() => {
 .brand-text { font-size: 20px; font-weight: 700; color: var(--vp-c-text-1); }
 
 .nav-right { display: flex; align-items: center; gap: 20px; }
-.nav-inline { display: flex; align-items: center; gap: 20px; }
+.nav-inline { display: flex; align-items: center; gap: 0; }
 .nav-appearance { display: flex; align-items: center; }
+
+/* VitePress draws a 1px divider between each of the four navbar groups on
+   inner pages (menu | translations | appearance | social links). Reproduce
+   the same rules and the same 1280px breakpoint here so both headers match. */
+.nav-divider {
+  display: none;
+  width: 1px;
+  height: 24px;
+  flex: 0 0 1px;
+  background-color: var(--vp-c-divider);
+  margin: 0 8px;
+}
+
+@media (min-width: 1280px) {
+  .nav-divider { display: block; }
+  .nav-divider-appearance { margin-right: 16px; }
+  .nav-divider-social { margin-left: 16px; }
+  .nav-social { margin-right: -8px; }
+}
 
 /* The "more" button is hidden on desktop, shown on mobile */
 .nav-more {
@@ -270,12 +309,30 @@ onUnmounted(() => {
   border-color: var(--vp-c-brand-1);
 }
 
+.panel-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 6px 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  text-decoration: none;
+}
+.panel-social-link:hover { color: var(--vp-c-text-1); }
+
 .panel-enter-active, .panel-leave-active { transition: opacity 0.18s ease, transform 0.18s ease; }
 .panel-enter-from, .panel-leave-to { opacity: 0; transform: translateY(-8px); }
 
 /* ── Breakpoints ────────────────────────────────────────────── */
 @media (max-width: 767px) {
-  .nav-inline { display: none; }
+  /* The theme switch lives inside .nav-inline now — keep it visible on
+     mobile, hide every other desktop-only group. */
+  .nav-inline .nav-menu,
+  .nav-inline .nav-lang,
+  .nav-inline .nav-social,
+  .nav-inline .nav-divider { display: none !important; }
   .nav-more { display: inline-flex; }
 }
 @media (min-width: 768px) {
