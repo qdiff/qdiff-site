@@ -136,8 +136,8 @@ faqs:
     answer: "No. qDiff works offline and only opens the files you choose. Nothing is uploaded."
   - question: "Can it compare whole folders?"
     answer: "Yes. You get a tree with new, changed and missing files, status filters, and copy or sync actions right in the list."
-  - question: "Is there a Chinese interface?"
-    answer: "Yes — Simplified Chinese, Traditional Chinese, English and many other languages, with light and dark appearance."
+  - question: "Which languages are available?"
+    answer: "The app and this site support seven languages: English, Simplified and Traditional Chinese, Japanese, German, Spanish and French, with light and dark appearance."
   - question: "What happens to my files?"
     answer: "They stay on your Mac. We do not collect, track or sync them. See the Privacy Policy for the full story."
 ---
@@ -151,6 +151,6 @@ project folders.
 
 - **Your files stay yours** — no account, no upload, no tracking.
 - **Free to use** — every comparison works without a purchase.
-- **Made for the Mac** — light and dark appearance, Chinese and English interface.
+- **Made for the Mac** — light and dark appearance, and a seven-language interface.
 
 > Drag two files onto the window and you are done. [See how it works](./guide/introduction.md).

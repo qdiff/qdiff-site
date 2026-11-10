@@ -1,6 +1,6 @@
 # qDiff 官网
 
-qDiff 的官方站点，面向普通用户介绍「把两份文件、两个文件夹或项目里的改动并排看清」这一件事。域名 `qdiff.w3cub.com`，用 VitePress 构建，英文为默认语言，另提供简体中文与繁體中文。
+qDiff 的官方站点，面向普通用户介绍「把两份文件、两个文件夹或项目里的改动并排看清」这一件事。域名 `qdiff.w3cub.com`，用 VitePress 构建，以英文为默认语言，共 7 种语言：English、`zh-CN`、`zh-TW`、`ja`、`de`、`es`、`fr`。
 
 站点内容刻意不谈实现细节：不讲框架、不讲编译、不讲版本库底层，只讲用户会遇到什么问题、怎么点、能得到什么。
 
@@ -9,11 +9,12 @@ qDiff 的官方站点，面向普通用户介绍「把两份文件、两个文�
 ```
 docs/
   index.md                 英文首页（自定义 AdvancedHome 布局）
-  zh-CN/  zh-TW/           中文首页 + 各自的使用指南
   guide/                   使用指南（英文）
   privacy/index.md         隐私政策（App Store Connect 必填）
   terms/index.md           使用条款
-  .vitepress/config.ts     三语导航、侧栏、页脚、SEO
+  zh-CN/ zh-TW/ ja/
+  de/ es/ fr/              其余六种语言：首页、指南、隐私政策、使用条款
+  .vitepress/config.ts     七语导航、侧栏、页脚、SEO
   .vitepress/theme/        自定义首页、导航、页脚、按钮、品牌样式
   public/                  logo、首页插图、OG 分享图、指南插图、功能图标
 scripts/build-assets.py    重新生成全部图片素材

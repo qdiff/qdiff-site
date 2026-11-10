@@ -4,7 +4,14 @@ import { useRoute, useData } from 'vitepress'
 import AdvancedHome from './AdvancedHome.vue'
 import HomeActions from './HomeActions.vue'
 import DownloadButtons from './DownloadButtons.vue'
+import { SUPPORTED_LANGS } from './locale'
 import './custom.css'
+
+// Every non-English locale has a custom homepage at /<lang>/. Derive the
+// matcher from SUPPORTED_LANGS so adding a language never needs a regex edit.
+const HOME_PATH = new RegExp(
+  `^\\/(${SUPPORTED_LANGS.filter((l) => l !== 'en').join('|')})\\/?$`
+)
 
 export default {
   extends: DefaultTheme,
@@ -30,8 +37,7 @@ export default {
 
       // Reactive getters (called inside the render below so Vue tracks route.path).
       const isHomePage = () =>
-        route.path === '/' ||
-        /^\/(zh-CN|zh-TW)\/?$/.test(route.path)
+        route.path === '/' || HOME_PATH.test(route.path)
 
       return () => {
         if (isHomePage()) {

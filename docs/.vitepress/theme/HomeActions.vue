@@ -26,6 +26,30 @@ const COPY = {
     secondary: '看看怎麼用',
     note: 'macOS 12 或更新 · 免費使用 · 不需要帳號',
   },
+  ja: {
+    primary: 'qDiff を入手',
+    primaryStore: 'Mac App Store からダウンロード',
+    secondary: '使い方を見る',
+    note: 'macOS 12 以降 · 無料で利用可能 · アカウント不要',
+  },
+  de: {
+    primary: 'qDiff holen',
+    primaryStore: 'Im Mac App Store laden',
+    secondary: 'So funktioniert es',
+    note: 'macOS 12 oder neuer · Kostenlos · Kein Konto erforderlich',
+  },
+  es: {
+    primary: 'Obtener qDiff',
+    primaryStore: 'Descargar en el Mac App Store',
+    secondary: 'Ver cómo funciona',
+    note: 'macOS 12 o posterior · Gratis · Sin cuenta',
+  },
+  fr: {
+    primary: 'Obtenir qDiff',
+    primaryStore: 'Télécharger sur le Mac App Store',
+    secondary: 'Voir comment ça marche',
+    note: 'macOS 12 ou version ultérieure · Gratuit · Sans compte',
+  },
 }
 
 const copy = computed(() => COPY[L.value])

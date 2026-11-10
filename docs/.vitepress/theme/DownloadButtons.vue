@@ -35,6 +35,42 @@ const COPY = {
     hint: '免費使用全部功能，另有一次性的選購項目。不需要帳號，也沒有訂閱。',
     subject: 'qDiff 測試版',
   },
+  ja: {
+    store: 'Mac App Store からダウンロード',
+    dmg: 'macOS インストーラーをダウンロード',
+    pendingTitle: 'Mac App Store 版は準備中です',
+    pendingBody: '先行して試してみたい方はご連絡ください。ビルドが用意でき次第お知らせします。',
+    email: 'プレビュー版をリクエスト',
+    hint: '無料で利用でき、オプションの一度きりの購入もあります。アカウントもサブスクリプションも不要です。',
+    subject: 'qDiff プレビュー版について',
+  },
+  de: {
+    store: 'Im Mac App Store laden',
+    dmg: 'macOS-Installationsprogramm laden',
+    pendingTitle: 'Die Mac-App-Store-Version ist in Vorbereitung',
+    pendingBody: 'Möchten Sie qDiff früher ausprobieren? Schreiben Sie uns — wir melden uns, sobald ein Build verfügbar ist.',
+    email: 'Vorschauversion anfragen',
+    hint: 'Kostenlos nutzbar, mit optionalem einmaligem Kauf. Kein Konto, kein Abonnement.',
+    subject: 'qDiff-Vorschauversion',
+  },
+  es: {
+    store: 'Descargar en el Mac App Store',
+    dmg: 'Descargar el instalador de macOS',
+    pendingTitle: 'La versión del Mac App Store está en camino',
+    pendingBody: '¿Quieres probarla antes? Escríbenos y te avisaremos en cuanto haya una versión disponible.',
+    email: 'Solicitar una versión preliminar',
+    hint: 'Gratis, con una compra única opcional. Sin cuenta ni suscripción.',
+    subject: 'Versión preliminar de qDiff',
+  },
+  fr: {
+    store: 'Télécharger sur le Mac App Store',
+    dmg: "Télécharger le programme d'installation macOS",
+    pendingTitle: 'La version du Mac App Store arrive bientôt',
+    pendingBody: 'Vous souhaitez essayer plus tôt ? Écrivez-nous et nous vous préviendrons dès qu’une version sera disponible.',
+    email: 'Demander une version d’aperçu',
+    hint: 'Gratuit, avec un achat unique facultatif. Sans compte ni abonnement.',
+    subject: 'Version d’aperçu de qDiff',
+  },
 }
 
 const copy = computed(() => COPY[L.value])

@@ -97,7 +97,12 @@ import VPNavBarMenu from 'vitepress/dist/client/theme-default/components/VPNavBa
 import VPNavBarTranslations from 'vitepress/dist/client/theme-default/components/VPNavBarTranslations.vue'
 import VPNavBarSocialLinks from 'vitepress/dist/client/theme-default/components/VPNavBarSocialLinks.vue'
 import VPSwitchAppearance from 'vitepress/dist/client/theme-default/components/VPSwitchAppearance.vue'
-// localeLink no longer needed — nav links are already prefixed in config.ts
+import { SUPPORTED_LANGS } from './locale'
+
+// Derived from the single source of truth in locale.ts (English is the root).
+const LOCALE_PREFIX = new RegExp(
+  `^\\/(${SUPPORTED_LANGS.filter((l) => l !== 'en').join('|')})(\\/.*)?$`
+)
 
 const { lang, theme, site } = useData()
 const route = useRoute()
@@ -111,7 +116,8 @@ const homeLink = computed(() =>
 )
 
 // Current locale's nav items (each has text + link).
-// Links in theme.nav are already locale-prefixed by config.ts (tc()),
+// localeLink is not needed here: links in theme.nav are already
+// locale-prefixed by config.ts (tc()),
 // so we use them as-is — no extra localeLink() wrapping.
 const navItems = computed(() =>
   (theme.value.nav || []).map((item: any) => ({
@@ -122,22 +128,27 @@ const navItems = computed(() =>
 
 const langMenuLabel = computed(() => theme.value.langMenuLabel || 'Language')
 
+// The English locale is keyed as 'root', not 'en' — resolve by the locale's
+// `lang` field so the mobile switcher marks the right entry as active.
 const currentLang = computed(() => {
-  const l = site.value.locales[lang.value]
-  return { label: (l && l.label) || 'English' }
+  const locales = site.value.locales || {}
+  const key = Object.keys(locales).find(
+    (k) => (locales[k]?.lang || (k === 'root' ? 'en' : k)) === lang.value
+  ) || 'root'
+  return { key, label: locales[key]?.label || 'English' }
 })
 
 // Build the language list from the configured locales, keeping the user on the
 // same relative path when they switch language.
 function stripLangPrefix(p: string): string {
-  const m = p.match(/^\/(zh-CN|zh-TW)(\/.*)?$/)
+  const m = p.match(LOCALE_PREFIX)
   return m ? (m[2] || '/') : p
 }
 const localeLinks = computed(() => {
   const locales = site.value.locales || {}
   const base = stripLangPrefix(route.path)
   return Object.entries(locales)
-    .filter(([key]) => key !== lang.value)
+    .filter(([key]) => key !== currentLang.value.key)
     .map(([key, val]: [string, any]) => {
       const prefix = key === 'root' ? '' : `/${key}`
       return { text: val.label, link: prefix + base, lang: key }

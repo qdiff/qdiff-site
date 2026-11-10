@@ -30,7 +30,7 @@ read, and you can change this later in Settings.
 | Mac | Apple silicon and Intel |
 | Account | Not required |
 | Internet | Not required for comparing |
-| Languages | English, Simplified Chinese, Traditional Chinese and more |
+| Languages | English, Simplified & Traditional Chinese, Japanese, German, Spanish, French |
 | Appearance | Light and dark |
 
 ## Free, with an optional one-time purchase

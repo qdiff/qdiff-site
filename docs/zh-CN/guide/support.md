@@ -9,7 +9,7 @@ description: "通过邮件获取 qDiff 帮助，以及怎样描述问题能更�
 
 **邮箱：** [qdiff@w3cub.com](mailto:qdiff@w3cub.com)
 
-中文或英文都可以。
+中文或英文都可以，日文、德文、西班牙文、法文也欢迎。
 
 ## 怎样描述，回复更快
 

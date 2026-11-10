@@ -49,10 +49,11 @@ plain text can be compared down to the smallest detail. See
 No. Nothing is collected, tracked or synced. The full explanation is in the
 [Privacy Policy](../privacy/).
 
-### Is there a Chinese interface?
+### Which languages are available?
 
-Yes, Simplified Chinese, Traditional Chinese, English and more, with light
-and dark appearance.
+The app and this site support seven languages: English, Simplified and
+Traditional Chinese, Japanese, German, Spanish and French, with light and
+dark appearance.
 
 ### Something is not working. What should I do?
 

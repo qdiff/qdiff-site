@@ -34,7 +34,7 @@ into a message, a document or a review. The picture has no markings added.
 ## Make it yours
 
 - **Appearance** — light and dark, following your Mac or set manually.
-- **Language** — English, Simplified Chinese, Traditional Chinese and more.
+- **Language** — English, Simplified & Traditional Chinese, Japanese, German, Spanish and French.
 - **Fonts and shortcuts** — adjust reading comfort and use the keyboard for
   the actions you repeat most.
 - **Recent comparisons** — reopen something you looked at yesterday from the

@@ -7,10 +7,10 @@
  * supported locales and the helpers that compute locale-prefixed links.
  */
 
-export type Lang = 'en' | 'zh-CN' | 'zh-TW'
+export type Lang = 'en' | 'zh-CN' | 'zh-TW' | 'ja' | 'de' | 'es' | 'fr'
 
 export const SUPPORTED_LANGS: Lang[] = [
-  'en', 'zh-CN', 'zh-TW',
+  'en', 'zh-CN', 'zh-TW', 'ja', 'de', 'es', 'fr',
 ]
 
 /** Resolve the current lang, falling back to 'en' for unknown values. */

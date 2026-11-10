@@ -10,7 +10,7 @@ we read every message.
 
 **Email:** [qdiff@w3cub.com](mailto:qdiff@w3cub.com)
 
-You can write in English or Chinese.
+You can write in English, Chinese, Japanese, German, Spanish or French.
 
 ## What helps us help you
 
